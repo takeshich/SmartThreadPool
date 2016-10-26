@@ -1,5 +1,5 @@
 
-#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE)
+#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE) && !(ANDROID)
 
 using System;
 using System.Diagnostics;

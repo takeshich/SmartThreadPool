@@ -483,7 +483,7 @@ namespace Amib.Threading
 
             _isSuspended = _stpStartInfo.StartSuspended;
 
-#if (_WINDOWS_CE) || (_SILVERLIGHT) || (_MONO) || (WINDOWS_PHONE)
+#if (_WINDOWS_CE) || (_SILVERLIGHT) || (_MONO) || (WINDOWS_PHONE) || (ANDROID)
 			if (null != _stpStartInfo.PerformanceCounterInstanceName)
 			{
                 throw new NotSupportedException("Performance counters are not implemented for Compact Framework/Silverlight/Mono, instead use StpStartInfo.EnableLocalPerformanceCounters");

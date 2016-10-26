@@ -63,7 +63,7 @@ namespace Amib.Threading.Internal
         /// </summary>
         private object _state;
 
-#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE)
+#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE) && !(ANDROID)
         /// <summary>
         /// Stores the caller's context
         /// </summary>
@@ -211,7 +211,7 @@ namespace Amib.Threading.Internal
             _workItemsGroup = workItemsGroup;
             _workItemInfo = workItemInfo;
 
-#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE)
+#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE) && !(ANDROID)
             if (_workItemInfo.UseCallerCallContext || _workItemInfo.UseCallerHttpContext)
             {
                 _callerContext = CallerThreadContext.Capture(_workItemInfo.UseCallerCallContext, _workItemInfo.UseCallerHttpContext);
@@ -362,7 +362,7 @@ namespace Amib.Threading.Internal
         private void ExecuteWorkItem()
         {
 
-#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE)
+#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE) && !(ANDROID)
             CallerThreadContext ctc = null;
             if (null != _callerContext)
             {
@@ -408,13 +408,13 @@ namespace Amib.Threading.Internal
                 // work items was cancelled.
                 if (!SmartThreadPool.CurrentThreadEntry.AssociatedSmartThreadPool.IsShuttingdown)
                 {
-#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE)
+#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE) && !(ANDROID)
                     Thread.ResetAbort();
 #endif
                 }
             }
 
-#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE)
+#if !(_WINDOWS_CE) && !(_SILVERLIGHT) && !(WINDOWS_PHONE) && !(ANDROID)
             if (null != _callerContext)
             {
                 CallerThreadContext.Apply(ctc);
